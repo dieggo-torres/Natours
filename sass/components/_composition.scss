@@ -1,0 +1,49 @@
+.composition {
+  // Relatively positioned element
+  position: relative;
+
+  &__photo {
+    width: 55%;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, 0.4);
+    border-radius: 2px;
+    position: absolute;
+    z-index: 10;
+    transition: all 0.2s;
+    outline-offset: 2rem;
+
+    &--p1 {
+      top: -2rem;
+      left: 0;
+    }
+
+    &--p2 {
+      top: 2rem;
+      right: 0;
+    }
+
+    &--p3 {
+      top: 10rem;
+      left: 20%;
+    }
+
+    &:hover {
+      // Creates a line around the element
+      outline: 1.5rem solid $color-primary;
+
+      // Scales up and translates the element
+      transform: scale(1.05) translateY(-0.5rem);
+
+      // Casts a bigger shadow as if the element is farther away from the screen
+      box-shadow: 0 2.5rem 4rem rgba($color-black, 0.5);
+
+      // The hovered element gets a bigger z-index so it's on top
+      z-index: 20;
+    }
+  }
+
+  // Selects the picture inside the composition that is NOT hovered
+  &:hover &__photo:not(:hover) {
+    // Shrinks the element by 5%
+    transform: scale(0.95);
+  }
+}
